@@ -9,10 +9,13 @@ namespace :imagedownloader do
 
     urls = File.readlines(file_path).map(&:chomp)
 
-    urls.each_with_index do |url, index|
+    puts "Download completed!" if urls.empty?
+
+    urls.first.split(' ').each_with_index do |url, index|
       begin
         filename = "#{output_folder}/image_#{index}.jpg"
-        open(url) do |image|
+
+        URI.open(url) do |image|
           File.open(filename, 'wb') do |file|
             file.write(image.read)
           end
