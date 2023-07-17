@@ -9,7 +9,7 @@ namespace :imagedownloader do
 
     urls = File.readlines(file_path).map(&:chomp)
 
-    puts "Download completed!" if urls.empty?
+    puts "empty file" if urls.empty?
 
     urls.first.split(' ').each_with_index do |url, index|
       begin
